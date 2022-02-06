@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         display.setShowSoftInputOnFocus(false);
         display.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 if (getString(R.string.display).equals(display.getText().toString())) {
                     display.setText("");
                 }
@@ -58,25 +58,24 @@ public class MainActivity extends AppCompatActivity {
         String userExp = display.getText().toString();
 
         userExp = userExp.replaceAll("÷","/");
-        userExp = userExp.replaceAll("×", "×");
+        userExp = userExp.replaceAll("\u00D7", "x");
 
-        Expression exp = new Expression(userExp);
+        Expression Exp = new Expression(userExp);
 
-        String result = String.valueOf(exp.calculate());
+        String result = String.valueOf(Exp.calculate());
+
         display.setText(result);
         display.setSelection(result.length());
     }
 
     public void oneBTN(View view) {
+
         updateText("1");
+    }
+    public void twoBTN(View view) {
 
         updateText("2");
     }
-
-    public void twoBTN(View view) {
-
-    }
-
     public void threeBTN(View view) {
 
         updateText("3");
@@ -124,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void multiplyBTN(View view) {
 
-        updateText("×");
+        updateText("x");
     }
 
     public void clearBTN(View view) {
@@ -185,6 +184,7 @@ public class MainActivity extends AppCompatActivity {
             display.setText(selection);
             display.setSelection(cursorPos - 1);
         }
+
     }
 
 }
