@@ -15,8 +15,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        display = findViewById(R.id.input);
+        display = findViewById(R.id.textView4);
         display.setShowSoftInputOnFocus(false);
+        
         display.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,7 +51,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void plusMinusBTN(View view) {
-        updateText("+/-");
+       // updateText("+");
+        updateText("-");
 
     }
 
@@ -58,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         String userExp = display.getText().toString();
 
         userExp = userExp.replaceAll("÷","/");
-        userExp = userExp.replaceAll("\u00D7", "x");
+        userExp = userExp.replaceAll("x", "*");
 
         Expression Exp = new Expression(userExp);
 
@@ -123,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void multiplyBTN(View view) {
 
-        updateText("x");
+        updateText("*");
     }
 
     public void clearBTN(View view) {
